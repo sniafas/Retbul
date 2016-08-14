@@ -1,0 +1,16 @@
+/vendor
+/node_modules
+/public/storage
+/public/dataset
+/public/files
+/public/img
+/public/olmatches
+/public/sift_exps
+/public/surf_exps
+/public/uploads
+/public/*.py
+/public/*.json
+
+Homestead.yaml
+Homestead.json
+.env
