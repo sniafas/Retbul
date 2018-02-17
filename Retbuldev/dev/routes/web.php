@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('api/v2')->group(function() {
+    Route::resource('images', 'DatasetController@index');
+});

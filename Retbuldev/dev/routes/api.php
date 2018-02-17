@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
 
-Route::get('dataset','ImageController@index');
+Route::get('v1/dataset','ImageController@index');
 Route::get('dataset/{id}','ImageController@show');
 Route::put('dataset','ImageController@store');
 Route::post('dataset','ImageController@store');
