@@ -5,13 +5,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<title>RetBul</title>
 		<link rel="stylesheet" href="{{ URL::to('css/main.css') }}">
-		<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-		<link rel="stylesheet" href="{{ asset('css/bootstrap-theme.min.css') }}">
-		<link rel="stylesheet" href="{{ asset('lightbox/src/css/lightbox.css') }}">
-		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<!-- Fonts -->
 		<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="{{ URL::to('css/font-awesome-4.6.3/css/font-awesome.min.css') }}">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<meta name="csrf-token" content="{{ csrf_token() }}" />
  		<script>window.Laravel = { csrfToken: '{{ csrf_token() }}' }</script>		
 	</head>
@@ -83,7 +80,5 @@
 		<!-- Scripts -->
 		<script src="{{ asset('js/app.js') }}"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script src="{{asset('lightbox/src/js/lightbox.js') }}"></script>
-
 	</body>
 </html>
