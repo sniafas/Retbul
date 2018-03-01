@@ -17,6 +17,7 @@ import cv2
 import subprocess
 from json_tricks.np import dump, dumps, load, loads, strip_comments
 import json
+import math
 
 queryImg = ''
 hessianThreshold = 100
@@ -52,6 +53,31 @@ def rankingList(index,image_id,n_inliers,percent):
 	resList[index][1] = image_id
 	resList[index][2] = n_inliers
 	resList[index][3] = percent
+
+def drawKeypoint(img, p):
+	
+	for i in range(0,len(p)):
+		
+		x = int(round(p[i].pt[0]))
+		y = int(round(p[i].pt[1]))
+		center = (x,y)
+			
+		radius = round(p[i].size/2) # KeyPoint::size is a diameter
+		
+		
+		#draw the circles around keypoints with the keypoints size
+		cv2.circle( img, center, int(radius), (0,0,100), 2)
+		
+		#draw orientation of the keypoint, if it is applicable		
+		if p[i].angle != -1 :
+			
+			srcAngleRad = p[i].angle * 3.14159/180;
+			orient1 = int(round(math.cos(srcAngleRad)*radius ))
+			orient2 = int(round(math.sin(srcAngleRad)*radius ))
+			cv2.line( img, center, (x+orient1,y+orient2), (0,255,255), 2);
+
+	return img
+
 
 if __name__ == '__main__':
 
@@ -98,7 +124,8 @@ if __name__ == '__main__':
 	## # open, write, close logging files from query Image # ##
 	#writeLogsQuery(d1)
 	
-	cv2.drawKeypoints(gray1, kp1, img1Res)
+	cv2.drawKeypoints(img1Res, kp1, img1Res,flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+	#img1Res1 = drawKeypoint(img1Res,kp1)
 	cv2.imwrite(timestampFolder + '/surf_keypoints1.jpg',img1Res)
 	## #----------------- # ##
 	
@@ -122,7 +149,8 @@ if __name__ == '__main__':
 	## # open, write, close logging files from trainImage # ##
 	#writeLogsTrain(save_path,d2,kp2)
 
-	cv2.drawKeypoints(gray2,kp2,img2Res)
+	cv2.drawKeypoints(img2Res,kp2,img2Res,flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+	#img1Res2 = drawKeypoint(img2Res,kp2)
 	cv2.imwrite(timestampFolder + '/surf_keypoints2.jpg',img2Res)
 
 	## # ----------------# ##
@@ -172,8 +200,8 @@ if __name__ == '__main__':
 			h1, w1, z1 = img1Res.shape[:3]
 			h2, w2, z2 = img2Res.shape[:3]
 			img3 = np.zeros((max(h1, h2), w1+w2,z1), np.uint8)
-			img3[:h1, :w1, :z1] = img1Res
-			img3[:h2, w1:w1+w2, :z2] = img2Res
+			img3[:h1, :w1, :z1] = cv2.resize(img1, (480, 640))
+			img3[:h2, w1:w1+w2, :z2] = cv2.resize(img2, (480, 640))
 			#img3 = cv2.cvtColor(img3, cv2.COLOR_GRAY2BGR)
 
 

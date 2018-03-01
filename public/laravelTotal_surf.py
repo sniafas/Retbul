@@ -19,7 +19,7 @@ from json_tricks.np import dump, dumps, load, loads, strip_comments
 import json
 
 queryImg = ''
-hessianThreshold = 300
+hessianThreshold = 200
 nOctaves = 3
 nOctaveLayers = 3
 upright = 1

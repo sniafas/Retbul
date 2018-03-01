@@ -44,11 +44,11 @@ class OfflineController extends Controller
 
         $imageId = $request['imgId'];
         $building = $request['building'];
-        $descriptor = $request['descriptor'];
+        $descriptor = strtolower($request['descriptor']);
         $exp1 = $request['exp1'];
         $exp2 = $request['exp2'];        
         
-        if ($descriptor == 'Sift')
+        if ($descriptor == 'sift')
         {
 
             $resultPath = File::get(base_path('public/sift_exps/exp2/') . $imageId . '/results.json');
@@ -56,7 +56,7 @@ class OfflineController extends Controller
             $exp = 2;
 
         }
-        else if ($descriptor == 'Surf')
+        else if ($descriptor == 'surf')
         {
               
             $resultPath = File::get(base_path('public/surf_exps/exp2/') . $imageId . '/results.json');

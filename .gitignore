@@ -1,5 +1,6 @@
 /vendor
 /node_modules
+/public/downloads
 /public/storage
 /public/dataset
 /public/files
@@ -11,6 +12,8 @@
 /public/*.py
 /public/*.json
 
+access.log
+error.log
 Homestead.yaml
 Homestead.json
 .env

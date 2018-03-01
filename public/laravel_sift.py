@@ -97,7 +97,8 @@ if __name__ == '__main__':
 	## # open, write, close logging files from query Image # ##
 	#writeLogsQuery(d1)
 	
-	cv2.drawKeypoints(gray1, kp1, img1Res)
+	#cv2.drawKeypoints(gray1, kp1, img1Res)
+	cv2.drawKeypoints(img1Res,kp1,img1Res,flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
 	cv2.imwrite(timestampFolder + '/sift_keypoints1.jpg',img1Res)
 	## #----------------- # ##
 	
@@ -121,7 +122,8 @@ if __name__ == '__main__':
 	## # open, write, close logging files from trainImage # ##
 	#writeLogsTrain(save_path,d2,kp2)
 
-	cv2.drawKeypoints(gray2,kp2,img2Res)
+	#cv2.drawKeypoints(gray2,kp2,img2Res)
+	cv2.drawKeypoints(img2Res,kp2,img2Res,flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
 	cv2.imwrite(timestampFolder + '/sift_keypoints2.jpg',img2Res)
 
 	## # ----------------# ##
@@ -168,12 +170,12 @@ if __name__ == '__main__':
 		#hsLog(save_path,Homography, status)			
 		
 		try:
-			h1, w1 = img1Res.shape[:2]
-			h2, w2 = img2Res.shape[:2]
-			img3 = np.zeros((max(h1, h2), w1+w2), np.uint8)
-			img3[:h1, :w1] = gray1
-			img3[:h2, w1:w1+w2] = gray2
-			img3 = cv2.cvtColor(img3, cv2.COLOR_GRAY2BGR)
+			h1, w1, z1 = img1Res.shape[:3]
+			h2, w2, z2 = img2Res.shape[:3]
+			img3 = np.zeros((max(h1, h2), w1+w2,z1), np.uint8)
+			img3[:h1, :w1, :z1] = cv2.resize(img1, (480, 640))
+			img3[:h2, w1:w1+w2, :z2] = cv2.resize(img2, (480, 640))
+			#img3 = cv2.cvtColor(img3, cv2.COLOR_GRAY2BGR)
 
 			p1 = np.int32([kpp[0].pt for kpp in kp_pairs])
 			p2 = np.int32([kpp[1].pt for kpp in kp_pairs]) + (w1, 0)

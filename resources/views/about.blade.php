@@ -31,6 +31,9 @@
 						<p class="lead">
 							A query represents an image of the given dataset, chosen from <span>RetBul</span> database.	
 						</p>
+						<p class="lead">
+							<i>Modes</i>
+						</p>						
 						<div class="col-md-6">
 							<p class="lead">
 							<span>Offline</span>
@@ -48,7 +51,26 @@
 								<li>Upload or query a user defined image, processed through the best <span>60</span>
 									representative building images of <span>RetBul</span> database.</li>
 							</ul>
-						</div>												
+						</div>
+						<p class="lead">
+							<i>Image Features</i>
+						</p>
+						<div class="col-md-6">
+							<p class="lead">
+							<span>SIFT</span>
+							</p>
+							Scale-Invariant Feature Transform (SIFT) features proposed by David Lowe is one of the most widely
+							used feature descriptors, for tasks such as pattern recognition, image registration, semantic image analysis, etc,
+							as they have been proven to achieve high repeatability and distinctiveness.						
+						</div>
+						<div class="col-md-6">
+							<p class="lead">
+							<span>SURF</span>
+							</p>
+							Speeded-Up Robust Features (SURF) features have been partially inspired by the SIFT and during the last
+							decade have been successfully adopted in many computer vision related problems, used
+							both to extract set of keypoints and visual content. They may achieve comparable performance yet requiring less computational time.							
+						</div>																							
 					</div>
 				</div>
 

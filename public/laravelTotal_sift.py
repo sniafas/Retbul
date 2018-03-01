@@ -24,7 +24,7 @@ queryImg = ''
 nFeatures = 0
 nOctaveLayers = 3
 contrastThres = 0.08
-edgeThres = 10
+edgeThres = 8
 rawMatches = 1
 
 def filter_rawMatches(kp1, kp2, matches, ratio = 0.75):
@@ -214,12 +214,12 @@ if __name__ == '__main__':
 			#hsLog(save_path,Homography, status)			
 			
 			try:
-				h1, w1 = img1Res.shape[:2]
-				h2, w2 = img2Res.shape[:2]
-				img3 = np.zeros((max(h1, h2), w1+w2), np.uint8)
-				img3[:h1, :w1] = gray1
-				img3[:h2, w1:w1+w2] = gray2
-				img3 = cv2.cvtColor(img3, cv2.COLOR_GRAY2BGR)
+				h1, w1, z1 = img1Res.shape[:3]
+				h2, w2, z2 = img2Res.shape[:3]
+				img3 = np.zeros((max(h1, h2), w1+w2,z1), np.uint8)
+				img3[:h1, :w1, :z1] = img1Res
+				img3[:h2, w1:w1+w2, :z2] = img2Res
+				#img3 = cv2.cvtColor(img3, cv2.COLOR_GRAY2BGR)
 
 				p1 = np.int32([kpp[0].pt for kpp in kp_pairs])
 				p2 = np.int32([kpp[1].pt for kpp in kp_pairs]) + (w1, 0)
