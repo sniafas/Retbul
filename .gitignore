@@ -14,6 +14,9 @@
 
 access.log
 error.log
+public/robots.txt
+public/ww.config
+
 Homestead.yaml
 Homestead.json
 .env
