@@ -20,7 +20,7 @@ Vue.component(
 	require('./components/ImageList.vue')
 );
 
-Vue.component('pagination', require('laravel-vue-pagination'));
+Vue.component('paginate', require('vuejs-paginate'));
 
 const app = new Vue({
   		el: '#app'

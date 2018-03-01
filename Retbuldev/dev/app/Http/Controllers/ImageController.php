@@ -20,7 +20,7 @@ class ImageController extends Controller
     public function index()
     {
     	//Get dataset's items
-    	$image = Dataset::paginate(10);
+    	$image = Dataset::paginate(9);
     	// Return a collection of $images
     	return $this->response->withPaginator($image, new ImageTransformer());
     }

@@ -1,51 +1,73 @@
 <template>
-    <div class='row'>
-        <h4>All images</h4>
-        <ul>
-            <li v-for="image in laravelData.data" v-text="image.name">
-                {{ image.name }}
-            </li>
-        </ul>
- 
-        <pagination :data="laravelData" v-on:pagination-change-page="getResults"></pagination>
-        <pagination :data="laravelData">
-            <span slot="prev-nav">&lt; Previous</span>
-            <span slot="next-nav">Next &gt;</span>
-        </pagination>        
-    </div>
+    <div class="row">
+        <div class="col-12 col-lg-12 col-xs-12 col-sm-12">
+            <div class="centered">
+                <h3> Section for offline experiments</h3>
+            </div>
+            <div v-for="image in dataset">
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img :src="'Vyronasdbmin/' + image.image_name" :alt="image.image_name">
+
+                        <div class="caption">
+                          <button class = "btn btn-primary" role = "button" type="submit">Go!</button>
+                          <p>Building:{{ image.building_id }}</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="centered">
+        <paginate
+        :page-count="pageCount"
+        :margin-pages="2"
+        :page-range="4"
+        :initial-page="0"
+        :container-class="'pagination'"
+        :click-handler="fetch"
+        :prev-text="'Prev'"
+        :next-text="'Next'"
+        ></paginate>
+    </div>    
+</div>
 </template>
 
 <script>
-Vue.component('example-component', {
- 
+export default {
+
     data() {
         return {
-            // Our data object that holds the Laravel paginator data
-            laravelData: {},
-        }
+            dataset: [],
+            pageCount: 1,
+            endpoint: 'api/v1/dataset?page='
+        };
     },
- 
+
     created() {
-        // Fetch initial results
-        this.getResults();
+        this.fetch();
     },
- 
+
     methods: {
-        // Our method to GET results from a Laravel endpoint
-        getResults(page) {
-            if (typeof page === 'undefined') {
-                page = 1;
+        fetch(page = 1) {
+            axios.get(this.endpoint + page)
+            .then(({data}) => {
+                this.dataset = data.data;
+                this.pageCount = data.meta.pagination.total_pages;
+            });
+        },
+
+        report(id) {
+            if(confirm('Are you sure you want to report this signature?')) {
+                axios.put('api/v1/dataset/'+id)
+                .then(response => this.removeImage(id));
             }
- 
-            // Using vue-resource as an example
-            this.$http.get('api/v2/images?page=' + page)
-                .then(response => {
-                    return response.json();
-                }).then(data => {
-                    this.laravelData = data;
-                });
+        },
+
+        removeImage(id) {
+            this.dataset = _.remove(this.image, function (image) {
+                return image.id !== id;
+            });
         }
     }
- 
-});
+}
 </script>

@@ -13,21 +13,12 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Dataset::class, function (Faker $faker) {
-    return [
-        
-        'name' => $faker->name,
-        'buildingid' => $faker->numberBetween($min = 1, $max = 60),
-        'experiment' => $faker->numberBetween($min = 0, $max = 1),
-      
-    ];
-});
-
 $factory->define(App\UserDataset::class, function (Faker $faker) {
     return [
         
-        'name' => $faker->name,
-        'buildingid' => $faker->numberBetween($min = 1, $max = 60),
+        'user_id' => $faker->numberBetween($min = 1, $max = 10),
+        'image_name' => $faker-> image() ,
+        'building_id' => $faker->numberBetween($min = 61, $max = 70),
         'experiment' => $faker->numberBetween($min = 0, $max = 1),
       
     ];

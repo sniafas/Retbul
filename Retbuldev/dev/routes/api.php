@@ -17,6 +17,6 @@ use Illuminate\Http\Request;
 //    return $request->user();
 
 Route::get('v1/dataset','ImageController@index');
-Route::get('dataset/{id}','ImageController@show');
-Route::put('dataset','ImageController@store');
-Route::post('dataset','ImageController@store');
+Route::get('v1/dataset/{id}','ImageController@show');
+Route::post('v1/dataset','ImageController@create');
+Route::delete('v1/dataset/{id}','ImageController@delete');

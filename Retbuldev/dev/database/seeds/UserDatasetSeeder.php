@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\UserDataset;
 
-class DatasetTableSeeder extends Seeder
+class UserDatasetSeeder extends Seeder
 {
     /**
      * Run the database seeds.

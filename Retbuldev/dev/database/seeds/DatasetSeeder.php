@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Dataset;
+
 class DatasetSeeder extends Seeder
 {
     /**
@@ -22,8 +23,8 @@ class DatasetSeeder extends Seeder
 		{
 
 			Dataset::create(array(
-				'name' => $data[1],
-				'buildingid' => $data[2],
+				'image_name' => $data[1],
+				'building_id' => $data[2],
 				'experiment' => 0,
 				'created_at' => new DateTime,
                 'updated_at' => new DateTime

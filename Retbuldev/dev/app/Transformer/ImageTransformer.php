@@ -7,8 +7,8 @@ class ImageTransformer extends TransformerAbstract {
     public function transform($image) {
         return [
             'id' => $image->id,
-            'name' => $image->name,
-            'building_id' => $image->buildingid,
+            'image_name' => $image->image_name,
+            'building_id' => $image->building_id,
             'experiment' =>	$image->experiment
         ];
     }

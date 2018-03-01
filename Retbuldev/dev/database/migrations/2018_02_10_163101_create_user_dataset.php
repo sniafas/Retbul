@@ -14,9 +14,10 @@ class CreateUserDataset extends Migration
     public function up()
     {
         Schema::create('userdataset', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->integer('buildingid');
+            $table->uuid('id')->primary();
+            $table->integer('user_id')->unsigned();
+            $table->string('image_name');
+            $table->integer('building_id');
             $table->integer('experiment');
             $table->timestamps();
         });
