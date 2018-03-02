@@ -51,12 +51,12 @@
 				<div class="panel-body">
 					<span> Image Descriptor: </span>
 					<select name="descriptor" class="selectpicker">
-						<option>Surf</option>
-						<option>Sift</option>
-						<option>Orb</option>
+						<option>SURF</option>
+						<option>SIFT</option>
+						<option>ORB</option>
 					</select>
 
-					<button class="btn btn-primary">Run script</button>
+					<button class="btn btn-primary">Go!</button>
 					<input type="hidden" value=" {!! csrf_token() !!}" name="_token">
 					</form>					
 				</div>
@@ -90,16 +90,16 @@
 
 					<span> Image Descriptor: </span>
 					<select name="descriptor" class="selectpicker">
-						<option>Surf</option>
-						<option>Sift</option>
-						<option>Orb</option>
+						<option>SURF</option>
+						<option>SIFT</option>
+						<option>ORB</option>
 					</select>
 
-					<button class="btn btn-primary">Run script</button>
+					<button class="btn btn-primary">Go!</button>
 					<input type="hidden" value=" {!! csrf_token() !!}" name="_token">
 					{!! Form::close() !!}
 
-					<h3> or upload yours </h3>
+					<h3>Upload (portrait up to 2Mb)</h3> 
 					<div class="col-md-4">
 
 					{!! Form::open(['url'=>'/online/upload', 'method'=>'POST', 'files'=>'true']) !!}

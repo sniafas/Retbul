@@ -1,5 +1,6 @@
 /vendor
 /node_modules
+/public/downloads
 /public/storage
 /public/dataset
 /public/files
@@ -10,6 +11,11 @@
 /public/uploads
 /public/*.py
 /public/*.json
+
+access.log
+error.log
+public/robots.txt
+public/ww.config
 
 Homestead.yaml
 Homestead.json

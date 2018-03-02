@@ -15,8 +15,8 @@
 						<div class = "caption">
 							<form action="{{route('expexec')}}" method="post">
 								<select name="descriptor" class="selectpicker">
-									<option>Surf</option>
-									<option>Sift</option>
+									<option>SURF</option>
+									<option>SIFT</option>
 								</select>
 								<button class = "btn btn-primary" role = "button" type="submit">Go!</button>
 								<input type="hidden" value="{{ $id->imgId }}" name="imgId">

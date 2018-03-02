@@ -19,6 +19,7 @@
 
 	<body>
 		<nav class="navbar navbar-default">
+		<div class="container">
 		<div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -35,10 +36,12 @@
 					<li><a href="{{ url('/') }}">Home</a></li>
 					<li><a href="{{ route('offline')}}">Offline</a></li>
 					<li><a href="{{ route('online')}}">Online</a></li>
-					<li><a href="{{ url('https://www.flickr.com/photos/139433384@N07/') }}">Dataset</a></li>
+					<li><a href="{{ route('download') }}">Downloads</a></li>
+					<li><a href="{{ route('elastic') }}">Elastic</a></li>
 					<li><a href="{{ route('about')}}">About</a></li>
 				</ul>
 			</div>
+		</div>
 		</div>
 		</nav>
 		

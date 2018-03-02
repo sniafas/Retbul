@@ -24,7 +24,16 @@
 										<a class="example-image-link" href="{{ asset( $exp_path . '/' . $exp . '/' . $imageId . '/' . $log_path . '/' . str_limit($cBuild[0][1],11, $end = $match) )}}" data-lightbox="roadtrip">
 											<img  class="example-image" src="{{ asset( $exp_path . '/' . $exp . '/' . $imageId . '/' . $log_path . '/' . str_limit($cBuild[0][1],11, $end = $match) )}}">
 										</a>
-										<p> ImageId: {{ str_limit($cBuild[0][1],11, $end = '') }} </p>
+										<span> ImageId: {{ str_limit($cBuild[0][1],11, $end = '') }} </span>
+										<br>
+										<span> Inliers:</span>
+										@if ( $cBuild[0][2]	>= 9 )
+											<span style="color:green"> {{ $cBuild[0][2] }} </span>
+										@elseif ( $cBuild[0][2] > 6 AND $cBuild[0][2] < 9 )
+											<span style="color:blue"> {{ $cBuild[0][2] }} </span>
+										@else
+											<span style="color:red"> {{ $cBuild[0][2] }} </span>										
+										@endif
 									</div>
 								</div>
 							@endif
@@ -53,6 +62,15 @@
 											<i class="fa fa-times fa-2x"></i>
 										@endif
 										<br>
+										<span> Inliers:</span>
+										@if ( $totalBuild[0][2]	>= 9 )
+											<span style="color:green"> {{ $totalBuild[0][2] }} </span>
+										@elseif ( $totalBuild[0][2] > 6 AND $totalBuild[0][2] < 9 )
+											<span style="color:blue"> {{ $totalBuild[0][2] }} </span>
+										@else
+											<span style="color:red"> {{ $totalBuild[0][2] }} </span>										
+										@endif	
+										<br>									
 										<span>Score: {{{ number_format((float) $totalBuild[0][3],2) }}}  </span>
 									</div>
 							</div>
