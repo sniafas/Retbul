@@ -97,3 +97,22 @@ footer ul li a:link, footer ul li a:active, footer ul li a:visited{
 footer ul li a:hover{
     color: rgb(80,80,80);
 }
+
+.tooltip {
+    display:none;
+    position:absolute;
+    border:1px solid #333;
+    background-color:#161616;
+    border-radius:5px;
+    padding:10px;
+    color:#fff;
+    font-size:12px Arial;
+}
+
+.devmode{
+    background-color:#c2c2d6;
+    border:0.5px solid;
+    border-radius:5px;
+    padding:0.6px;
+    font-size:12px Arial;
+}

@@ -17,4 +17,19 @@
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    #block bad bots with a 403
+    SetEnvIfNoCase User-Agent "Baiduspider" bad_bot
+    SetEnvIfNoCase User-Agent "bingbot" bad_bot
+    SetEnvIfNoCase User-Agent "YandexBot" bad_bot
+    SetEnvIfNoCase User-Agent "AhrefsBot" bad_bot
+    SetEnvIfNoCase User-Agent "SeznamBot" bad_bot
+    SetEnvIfNoCase User-Agent "DotBot" bad_bot
+
+    <Limit GET POST>
+	Order Allow,Deny
+	Allow from all
+	Deny from env=bad_bot
+   </Limit>
+
 </IfModule>

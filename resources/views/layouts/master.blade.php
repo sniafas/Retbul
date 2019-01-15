@@ -37,7 +37,6 @@
 					<li><a href="{{ route('offline')}}">Offline</a></li>
 					<li><a href="{{ route('online')}}">Online</a></li>
 					<li><a href="{{ route('download') }}">Downloads</a></li>
-					<li><a href="{{ route('elastic') }}">Elastic</a></li>
 					<li><a href="{{ route('about')}}">About</a></li>
 				</ul>
 			</div>
@@ -64,8 +63,26 @@
 
 	  ga('create', 'UA-80735586-1', 'auto');
 	  ga('send', 'pageview');
-
 	</script>
+
+
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//analysis.sniafas.eu/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '2']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+
+
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>

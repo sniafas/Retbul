@@ -12,25 +12,19 @@ class DatasetSeeder extends Seeder
      */
     public function run()
     {
-		$p=0;
-    	DB::table('dataset')->truncate();
+		DB::table('dataset')->truncate();
 		$dataset_raw = File::get("public/vyronas_dataset.json");
 		$dataset = json_decode($dataset_raw,true);		
 		
-		#var_dump($dataset['filename'][899][1]);
-				
-		foreach ($dataset['filename'] as $data )
+		foreach ($dataset['dataset'] as $data )
 		{
-
 			Dataset::create(array(
 				'image_name' => $data[1],
 				'building_id' => $data[2],
 				'experiment' => 0,
 				'created_at' => new DateTime,
-                'updated_at' => new DateTime
-				));
-				
+				'updated_at' => new DateTime
+				));				
 		}
-
-    }
+	}
 }

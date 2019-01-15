@@ -9,6 +9,9 @@
     			<h1>Building Retrieval Platform</h1>
     			<p>An online image retrieval platform with buildings of Athens</p>
     			<p><a href="{{ route('offline')}}" class="btn btn-primary btn-lg">Try now!</a></p>
+                <h3> Or follow the 
+                    <a href="{{ url('http://retbuldev.sniafas.eu') }}" class="devmode" title="REST api, Vue.js + todo" data-toggle="tooltip">
+                     Development</a> version</h3>
             </div>
 		</div>
         <div class="row">
@@ -39,4 +42,9 @@
                 </div>
             </div>
         </div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>        
 @endsection
